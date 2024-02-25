@@ -55,7 +55,15 @@ export default function Game() {
   }
   // variables starting with _ will not be checked if they are being used
   const moves = history.map((_square, index) => {
-    let description = index > 0? 'Go to move ' + index : 'Go to game start';
+    let description;
+    if (index === history.length-1) {
+      return (<li key={index}>You are at move {index}</li>)
+    }
+    else if (index > 0) {
+      description = 'Go to move ' + index;
+    } else {
+      description = 'Go to game start';
+    }
     // fine to use index as key here because array will never be reordered
     return (
     <li key={index}>
